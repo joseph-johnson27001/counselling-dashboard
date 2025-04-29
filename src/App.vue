@@ -2,7 +2,7 @@
   <div id="app">
     <SideBar />
     <div class="main-content">
-      <router-view />
+      <router-view class="views" />
     </div>
   </div>
 </template>
@@ -71,5 +71,8 @@ body {
   flex-grow: 1;
   background-color: #f6f5f8;
   padding: 20px;
+  height: 100dvh;
+  overflow-y: scroll;
+  box-sizing: border-box;
 }
 </style>
