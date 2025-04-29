@@ -1,7 +1,7 @@
 <template>
   <div :class="['sidebar', { collapsed }]">
     <div class="sidebar-title">
-      <h1 v-if="!collapsed">Counsellors</h1>
+      <h1 v-if="!collapsed">Counselling App</h1>
       <i class="fas fa-bars" @click="toggleCollapse"></i>
     </div>
     <ul>
@@ -134,6 +134,7 @@ export default {
   font-weight: 400;
   margin: 0;
   color: #0b508b;
+  font-size: 1.5rem;
 }
 
 .sidebar-title i {
