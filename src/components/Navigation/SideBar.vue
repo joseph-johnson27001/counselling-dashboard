@@ -26,7 +26,7 @@ export default {
   name: "SideBar",
   data() {
     return {
-      activeItem: null, // initially null
+      activeItem: null,
       collapsed: false,
       menuItems: [
         { name: "home", label: "Home", icon: "far fa-file", link: "/" },

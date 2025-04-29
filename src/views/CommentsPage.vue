@@ -116,7 +116,7 @@ export default {
 .comments-table td {
   padding: 12px;
   text-align: left;
-  font-size: 15px;
+
   color: #333;
 }
 
@@ -158,7 +158,6 @@ export default {
 @media (max-width: 800px) {
   .comments-table th,
   .comments-table td {
-    font-size: 12px;
     padding: 8px;
   }
 

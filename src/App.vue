@@ -2,6 +2,7 @@
   <div id="app">
     <SideBar />
     <div class="main-content">
+      <MobileTopNav />
       <router-view class="views" />
     </div>
   </div>
@@ -9,11 +10,13 @@
 
 <script>
 import SideBar from "./components/Navigation/SideBar.vue";
+import MobileTopNav from "./components/Navigation/MobileTopNav.vue";
 
 export default {
   name: "App",
   components: {
     SideBar,
+    MobileTopNav,
   },
 };
 </script>
@@ -50,6 +53,7 @@ select {
   border: 1px solid #ccc;
   font-family: "Assistant", sans-serif;
   font-size: 14px;
+  outline: none;
 }
 
 .filter-container {
@@ -83,6 +87,16 @@ canvas {
 @media (max-width: 900px) {
   .stats-grid {
     grid-template-columns: 1fr;
+  }
+  .filter-container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  select {
+    width: 100%;
+    margin-top: 5px;
+    margin-left: 0px;
   }
 }
 </style>
