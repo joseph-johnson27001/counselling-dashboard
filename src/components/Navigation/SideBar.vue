@@ -26,7 +26,7 @@ export default {
   name: "SideBar",
   data() {
     return {
-      activeItem: "home",
+      activeItem: null, // initially null
       collapsed: false,
       menuItems: [
         { name: "home", label: "Home", icon: "far fa-file", link: "/" },
@@ -63,14 +63,32 @@ export default {
       ],
     };
   },
+  created() {
+    this.setActiveFromRoute();
+  },
+  watch: {
+    "$route.path"() {
+      this.setActiveFromRoute();
+    },
+  },
   methods: {
     navigate(item) {
       this.activeItem = item.name;
-      const path = item.link;
-      this.$router.push(path);
+      this.$router.push(item.link);
     },
     toggleCollapse() {
       this.collapsed = !this.collapsed;
+    },
+    setActiveFromRoute() {
+      const currentPath = this.$route.path;
+      const foundItem = this.menuItems.find(
+        (item) => item.link === currentPath
+      );
+      if (foundItem) {
+        this.activeItem = foundItem.name;
+      } else {
+        this.activeItem = "home";
+      }
     },
   },
 };

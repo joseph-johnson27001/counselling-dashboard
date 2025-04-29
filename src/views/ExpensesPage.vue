@@ -62,16 +62,4 @@ export default {
 };
 </script>
 
-<style>
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin-bottom: 15px;
-}
-.graph-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-}
-</style>
+<style></style>
