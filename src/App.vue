@@ -51,6 +51,12 @@ select {
   font-size: 14px;
 }
 
+.filter-container {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
 @media (max-width: 1200px) {
   .stats-grid {
     grid-template-columns: 1fr 1fr;

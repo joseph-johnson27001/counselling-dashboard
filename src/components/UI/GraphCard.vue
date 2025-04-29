@@ -43,6 +43,7 @@ export default {
   font-weight: 500;
   color: #345a98;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 @media (max-width: 400px) {

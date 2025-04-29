@@ -3,7 +3,7 @@
     <div class="filter-container">
       <label for="counsellor-select">Select Counsellor:</label>
       <select v-model="selectedCounsellor" @change="filterComments">
-        <option value="all">All counsellors</option>
+        <option value="all">All Counsellors</option>
         <option
           v-for="(counsellor, index) in counsellors"
           :key="index"
@@ -27,7 +27,6 @@ export default {
   },
   data() {
     return {
-      // Initial comments data
       comments: [
         {
           text: "Joanne always listens attentively and offers thoughtful insights.",
@@ -92,12 +91,6 @@ export default {
 </script>
 
 <style scoped>
-.filter-container {
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-}
-
 .comments-table-container {
   width: 100%;
   background-color: #ffffff;
