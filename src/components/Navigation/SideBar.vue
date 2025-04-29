@@ -12,7 +12,7 @@
           active: activeItem === item.name,
           'logout-item': item.name === 'logout',
         }"
-        @click="setActive(item.name)"
+        @click="navigate(item)"
       >
         <i :class="item.icon"></i>
         <span v-if="!collapsed">{{ item.label }}</span>
@@ -43,8 +43,10 @@ export default {
     };
   },
   methods: {
-    setActive(item) {
-      this.activeItem = item;
+    navigate(item) {
+      this.activeItem = item.name;
+      const path = item.name === "home" ? "/" : `/${item.name}`;
+      this.$router.push(path);
     },
     toggleCollapse() {
       this.collapsed = !this.collapsed;
@@ -114,7 +116,7 @@ export default {
   display: flex;
   align-items: center;
   transition: background-color 0.3s ease;
-  text-wrap: nowrap;
+  white-space: nowrap;
 }
 
 .sidebar ul li.logout-item {
@@ -136,7 +138,6 @@ export default {
     rgba(115, 103, 240, 0.7),
     rgb(115, 103, 240)
   );
-
   color: white;
 }
 
