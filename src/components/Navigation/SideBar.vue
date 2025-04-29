@@ -113,6 +113,7 @@ export default {
   transition: width 0.3s ease;
   overflow-y: scroll;
   scrollbar-width: none;
+  flex-shrink: 0;
 }
 
 .sidebar.collapsed {

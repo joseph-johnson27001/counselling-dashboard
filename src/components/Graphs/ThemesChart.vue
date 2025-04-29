@@ -1,6 +1,6 @@
 <template>
   <div class="chart-container">
-    <canvas ref="budgetPieChart"></canvas>
+    <canvas ref="themesPieChart"></canvas>
   </div>
 </template>
 
@@ -18,17 +18,16 @@ import { toRaw } from "vue";
 ChartJS.register(PieController, ArcElement, Tooltip, Legend, Title);
 
 export default {
-  name: "BudgetPieChart",
+  name: "ThemesChart",
   props: {
-    total: {
-      type: Number,
-      required: true,
-    },
-    categories: {
-      type: Object,
+    themes: {
+      type: Array,
       required: true,
       validator: (val) =>
-        Object.values(val).every((num) => typeof num === "number"),
+        val.every(
+          (item) =>
+            typeof item.label === "string" && typeof item.value === "number"
+        ),
     },
   },
   data() {
@@ -50,40 +49,46 @@ export default {
     this.destroyChart();
   },
   watch: {
-    categories: "renderChart",
-    total: "renderChart",
+    themes: "renderChart",
   },
   methods: {
     renderChart() {
-      if (!this.isMounted || !this.$refs.budgetPieChart) return;
+      if (!this.isMounted || !this.$refs.themesPieChart) return;
 
       this.destroyChart();
 
-      const categoryEntries = Object.entries(toRaw(this.categories));
-      const labels = categoryEntries.map(([key]) => key);
-      const data = categoryEntries.map(([, value]) => value);
+      const rawThemes = toRaw(this.themes);
+      const labels = rawThemes.map((item) => item.label);
+      const data = rawThemes.map((item) => item.value);
 
       const baseColors = [
-        "255, 112, 67",
-        "219, 68, 55",
-        "3, 169, 244",
-        "15, 157, 88",
+        "66, 165, 245",
+        "102, 187, 106",
+        "255, 167, 38",
         "171, 71, 188",
-        "0, 172, 193",
-        "94, 53, 177",
-        "0, 150, 136",
-        "255, 87, 34",
-        "124, 179, 66",
-        "101, 31, 255",
+        "239, 83, 80",
+        "38, 198, 218",
         "255, 202, 40",
-        "233, 30, 99",
+        "126, 87, 194",
+        "38, 166, 154",
+        "236, 64, 122",
+        "156, 204, 101",
+        "92, 107, 192",
+        "255, 112, 67",
+        "141, 110, 99",
+        "41, 182, 246",
+        "0, 172, 193",
+        "142, 36, 170",
+        "253, 216, 53",
+        "67, 160, 71",
+        "216, 27, 96",
       ];
 
       const backgroundColors = baseColors
         .slice(0, labels.length)
         .map((rgb) => `rgba(${rgb}, 0.6)`);
 
-      this.chartInstance = new ChartJS(this.$refs.budgetPieChart, {
+      this.chartInstance = new ChartJS(this.$refs.themesPieChart, {
         type: "pie",
         data: {
           labels,
@@ -92,7 +97,7 @@ export default {
               data,
               backgroundColor: backgroundColors,
               hoverOffset: 10,
-              borderWidth: 2,
+              borderWidth: 3,
               borderColor: "#fff",
             },
           ],
@@ -110,7 +115,7 @@ export default {
             tooltip: {
               callbacks: {
                 label: (tooltipItem) =>
-                  `${tooltipItem.label}: ฿${tooltipItem.raw.toLocaleString()}`,
+                  `${tooltipItem.label}: ${tooltipItem.raw}`,
               },
             },
           },
