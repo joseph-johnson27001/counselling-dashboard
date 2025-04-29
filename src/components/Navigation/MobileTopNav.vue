@@ -31,7 +31,7 @@ export default {
     return {
       menuOpen: false,
       menuItems: [
-        { name: "home", label: "Home", icon: "far fa-file", link: "/" },
+        { name: "home", label: "Home", icon: "fas fa-house", link: "/" },
         {
           name: "themes",
           label: "Themes",
