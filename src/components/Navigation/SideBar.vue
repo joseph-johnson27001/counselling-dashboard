@@ -29,23 +29,44 @@ export default {
       activeItem: "home",
       collapsed: false,
       menuItems: [
-        { name: "home", label: "Home", icon: "far fa-file" },
-        { name: "themes", label: "Themes", icon: "far fa-image" },
-        { name: "expenses", label: "Expenses", icon: "far fa-credit-card" },
+        { name: "home", label: "Home", icon: "far fa-file", link: "/" },
+        {
+          name: "themes",
+          label: "Themes",
+          icon: "far fa-image",
+          link: "/themes",
+        },
+        {
+          name: "expenses",
+          label: "Expenses",
+          icon: "far fa-credit-card",
+          link: "/expenses",
+        },
         {
           name: "clientInfo",
           label: "Client Information",
           icon: "far fa-address-book",
+          link: "/client-info",
         },
-        { name: "feedback", label: "Feedback", icon: "far fa-comments" },
-        { name: "comments", label: "Comments", icon: "far fa-comment-dots" },
+        {
+          name: "feedback",
+          label: "Feedback",
+          icon: "far fa-comments",
+          link: "/feedback",
+        },
+        {
+          name: "comments",
+          label: "Comments",
+          icon: "far fa-comment-dots",
+          link: "/comments",
+        },
       ],
     };
   },
   methods: {
     navigate(item) {
       this.activeItem = item.name;
-      const path = item.name === "home" ? "/" : `/${item.name}`;
+      const path = item.link;
       this.$router.push(path);
     },
     toggleCollapse() {
