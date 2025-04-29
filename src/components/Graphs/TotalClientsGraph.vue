@@ -1,6 +1,6 @@
 <template>
   <div class="chart-container">
-    <canvas ref="ratingsChart"></canvas>
+    <canvas ref="totalClientsChart"></canvas>
   </div>
 </template>
 
@@ -30,10 +30,10 @@ ChartJS.register(
 );
 
 export default {
-  name: "RatingsChart",
+  name: "TotalClientsChart",
   props: {
     labels: Array,
-    ratings: Array,
+    counts: Array,
   },
   data() {
     return {
@@ -55,31 +55,31 @@ export default {
   },
   watch: {
     labels: "renderChart",
-    ratings: "renderChart",
+    counts: "renderChart",
   },
   methods: {
     renderChart() {
-      if (!this.isMounted || !this.$refs.ratingsChart) return;
+      if (!this.isMounted || !this.$refs.totalClientsChart) return;
 
       this.destroyChart();
 
       const rawLabels = toRaw(this.labels) || [];
-      const rawRatings = toRaw(this.ratings) || [];
+      const rawCounts = toRaw(this.counts) || [];
 
-      this.chartInstance = new ChartJS(this.$refs.ratingsChart, {
+      this.chartInstance = new ChartJS(this.$refs.totalClientsChart, {
         type: "line",
         data: {
           labels: rawLabels,
           datasets: [
             {
-              label: "Ratings per Month",
-              data: rawRatings,
+              label: "Clients per Month",
+              data: rawCounts,
               fill: false,
-              borderColor: "#4caf50",
-              backgroundColor: "rgba(76, 175, 80, 0.2)",
+              borderColor: "#0288d1",
+              backgroundColor: "rgba(34, 139, 34, 0.2)",
               tension: 0.2,
               borderWidth: 2,
-              pointBackgroundColor: "#4caf50",
+              pointBackgroundColor: "#0288d1",
               pointBorderColor: "#fff",
               pointBorderWidth: 2,
               pointRadius: 5,
@@ -98,7 +98,6 @@ export default {
               grid: { display: true },
               ticks: { color: "#333" },
               min: 0,
-              max: 10,
             },
           },
           plugins: {
@@ -106,7 +105,7 @@ export default {
             tooltip: {
               callbacks: {
                 label: (tooltipItem) =>
-                  `Rating: ${tooltipItem.raw.toFixed(1)} / 10`,
+                  `${tooltipItem.raw.toLocaleString()} clients`,
               },
             },
           },

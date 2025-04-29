@@ -58,6 +58,16 @@ select {
   align-items: center;
 }
 
+.chart-container {
+  width: 100%;
+  height: 300px;
+}
+
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
 @media (max-width: 1200px) {
   .stats-grid {
     grid-template-columns: 1fr 1fr;

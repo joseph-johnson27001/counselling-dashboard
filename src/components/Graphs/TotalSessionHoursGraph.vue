@@ -1,27 +1,25 @@
 <template>
   <div class="chart-container">
-    <canvas ref="ratingsChart"></canvas>
+    <canvas ref="totalSessionHoursChart"></canvas>
   </div>
 </template>
 
 <script>
 import {
   Chart as ChartJS,
-  LineElement,
-  PointElement,
+  BarElement,
   CategoryScale,
   LinearScale,
   Title,
   Tooltip,
   Legend,
-  LineController,
+  BarController,
 } from "chart.js";
 import { toRaw } from "vue";
 
 ChartJS.register(
-  LineController,
-  LineElement,
-  PointElement,
+  BarController,
+  BarElement,
   CategoryScale,
   LinearScale,
   Title,
@@ -30,10 +28,10 @@ ChartJS.register(
 );
 
 export default {
-  name: "RatingsChart",
+  name: "TotalSessionHoursChart",
   props: {
     labels: Array,
-    ratings: Array,
+    sessionHours: Array,
   },
   data() {
     return {
@@ -55,34 +53,29 @@ export default {
   },
   watch: {
     labels: "renderChart",
-    ratings: "renderChart",
+    sessionHours: "renderChart",
   },
   methods: {
     renderChart() {
-      if (!this.isMounted || !this.$refs.ratingsChart) return;
+      if (!this.isMounted || !this.$refs.totalSessionHoursChart) return;
 
       this.destroyChart();
 
       const rawLabels = toRaw(this.labels) || [];
-      const rawRatings = toRaw(this.ratings) || [];
+      const rawSessionHours = toRaw(this.sessionHours) || [];
 
-      this.chartInstance = new ChartJS(this.$refs.ratingsChart, {
-        type: "line",
+      this.chartInstance = new ChartJS(this.$refs.totalSessionHoursChart, {
+        type: "bar",
         data: {
           labels: rawLabels,
           datasets: [
             {
-              label: "Ratings per Month",
-              data: rawRatings,
-              fill: false,
-              borderColor: "#4caf50",
-              backgroundColor: "rgba(76, 175, 80, 0.2)",
-              tension: 0.2,
-              borderWidth: 2,
-              pointBackgroundColor: "#4caf50",
-              pointBorderColor: "#fff",
-              pointBorderWidth: 2,
-              pointRadius: 5,
+              label: "Total Session Hours",
+              data: rawSessionHours,
+              borderColor: "rgba(34, 139, 34, 1)",
+              backgroundColor: "rgba(34, 139, 34, 0.2)",
+              hoverBackgroundColor: "rgba(34, 139, 34, 0.4)",
+              borderWidth: 1,
             },
           ],
         },
@@ -96,9 +89,9 @@ export default {
             },
             y: {
               grid: { display: true },
-              ticks: { color: "#333" },
-              min: 0,
-              max: 10,
+              ticks: {
+                color: "#333",
+              },
             },
           },
           plugins: {
@@ -106,7 +99,7 @@ export default {
             tooltip: {
               callbacks: {
                 label: (tooltipItem) =>
-                  `Rating: ${tooltipItem.raw.toFixed(1)} / 10`,
+                  `${tooltipItem.raw.toLocaleString()} hours`,
               },
             },
           },
