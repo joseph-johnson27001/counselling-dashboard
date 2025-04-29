@@ -1,5 +1,20 @@
 <template>
-  <CommentsTable :comments="comments" />
+  <div>
+    <div class="filter-container">
+      <label for="counsellor-select">Select Counsellor:</label>
+      <select v-model="selectedCounsellor" @change="filterComments">
+        <option value="all">All counsellors</option>
+        <option
+          v-for="(counsellor, index) in counsellors"
+          :key="index"
+          :value="counsellor"
+        >
+          {{ counsellor }}
+        </option>
+      </select>
+    </div>
+    <CommentsTable :comments="filteredComments" />
+  </div>
 </template>
 
 <script>
@@ -12,6 +27,7 @@ export default {
   },
   data() {
     return {
+      // Initial comments data
       comments: [
         {
           text: "Joanne always listens attentively and offers thoughtful insights.",
@@ -54,7 +70,107 @@ export default {
           date: "07/04/2025",
         },
       ],
+      selectedCounsellor: "all",
     };
+  },
+  computed: {
+    counsellors() {
+      const counsellorList = this.comments.map((comment) => comment.counsellor);
+      return [...new Set(counsellorList)];
+    },
+    filteredComments() {
+      if (this.selectedCounsellor === "all") {
+        return this.comments;
+      } else {
+        return this.comments.filter(
+          (comment) => comment.counsellor === this.selectedCounsellor
+        );
+      }
+    },
   },
 };
 </script>
+
+<style scoped>
+.filter-container {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.comments-table-container {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 10px 20px 20px 20px;
+  border: 1px solid #ccc;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 1px 4px;
+  font-family: "Assistant", sans-serif;
+  box-sizing: border-box;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.comments-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.comments-table th,
+.comments-table td {
+  padding: 12px;
+  text-align: left;
+  font-size: 15px;
+  color: #333;
+}
+
+.comments-table th {
+  background-color: #4a86e8;
+  color: white;
+  font-weight: 600;
+}
+
+.comments-table tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.comments-table tbody tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+.comments-table tbody tr:hover {
+  background-color: #e0f7fa;
+}
+
+.comment-text {
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.counsellor-name {
+  color: #00796b;
+  font-weight: 500;
+}
+
+.date {
+  color: #757575;
+  font-style: italic;
+}
+
+@media (max-width: 800px) {
+  .comments-table th,
+  .comments-table td {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .comments-table-container {
+    padding: 10px;
+  }
+}
+</style>

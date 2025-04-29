@@ -114,6 +114,7 @@ export default {
   overflow-y: scroll;
   scrollbar-width: none;
   flex-shrink: 0;
+  font-family: "Inter", sans-serif;
 }
 
 .sidebar.collapsed {

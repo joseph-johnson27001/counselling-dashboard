@@ -84,8 +84,6 @@ export default {
 .comment-text {
   max-width: 250px;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .counsellor-name {

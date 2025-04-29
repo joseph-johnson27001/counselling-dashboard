@@ -22,7 +22,7 @@ export default {
 body {
   margin: 0px !important;
   scrollbar-width: none;
-  font-family: "Inter", sans-serif;
+  font-family: "Assistant", sans-serif;
   overflow-y: hidden;
 }
 
@@ -40,6 +40,15 @@ body {
 .graph-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+select {
+  margin-left: 10px;
+  padding: 10px 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-family: "Assistant", sans-serif;
+  font-size: 14px;
 }
 
 @media (max-width: 1200px) {
