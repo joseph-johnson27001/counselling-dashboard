@@ -78,7 +78,7 @@ export default {
 
 .value {
   font-size: 15px;
-  font-weight: 500;
-  color: #333;
+  font-weight: 400;
+  color: #222;
 }
 </style>

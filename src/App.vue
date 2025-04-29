@@ -37,13 +37,18 @@ body {
   margin-bottom: 15px;
 }
 
+.graph-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 @media (max-width: 1200px) {
   .stats-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
   .graph-container {
     grid-template-columns: 1fr;
   }

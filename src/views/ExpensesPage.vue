@@ -46,6 +46,20 @@ export default {
           iconColor: "#ffbc00",
           iconContainerColor: "rgba(255, 188, 0, 0.1)",
         },
+        {
+          iconClass: "fas fa-money-bill-wave",
+          statName: "Total Spent",
+          value: "฿46,600",
+          iconColor: "#f46a6a",
+          iconContainerColor: "rgba(244, 106, 106, 0.1)",
+        },
+        {
+          iconClass: "fas fa-percentage",
+          statName: "Spending Rate",
+          value: "93%",
+          iconColor: "#556ee6",
+          iconContainerColor: "rgba(85, 110, 230, 0.1)",
+        },
       ],
       budget: {
         total: 50000,
@@ -61,5 +75,3 @@ export default {
   },
 };
 </script>
-
-<style></style>
