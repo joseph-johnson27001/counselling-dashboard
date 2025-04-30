@@ -1,4 +1,5 @@
 <template>
+  <h2>Themes</h2>
   <div class="stats-grid">
     <StatisticsCard
       v-for="theme in themes"

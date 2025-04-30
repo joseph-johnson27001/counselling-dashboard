@@ -1,4 +1,5 @@
 <template>
+  <h2>Expenses</h2>
   <div class="stats-grid">
     <StatisticsCard
       v-for="stat in stats"

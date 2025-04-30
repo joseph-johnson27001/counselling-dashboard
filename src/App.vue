@@ -33,6 +33,15 @@ body {
   display: none;
 }
 
+h2 {
+  font-family: "Inter", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: #0b508b;
+  margin-top: 0px;
+  margin-bottom: 15px;
+}
+
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

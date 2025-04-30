@@ -1,4 +1,5 @@
 <template>
+  <h2>Main Statistics</h2>
   <div class="stats-grid">
     <StatisticsCard
       v-for="stat in stats"
@@ -10,6 +11,8 @@
       :icon-container-color="stat.iconContainerColor"
     />
   </div>
+
+  <h2 style="margin-top: 20px">Total Clients</h2>
 
   <div class="filter-container">
     <label for="counsellor-select">Select Counsellor:</label>

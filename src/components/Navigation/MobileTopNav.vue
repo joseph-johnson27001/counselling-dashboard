@@ -80,20 +80,23 @@ export default {
 nav.mobile-nav {
   display: none;
   background-color: #fff;
-  padding: 8px 15px;
-  border: 1px solid #ccc;
+  padding: 15px 0px;
+  border-bottom: 1px solid #ccc;
   box-shadow: rgba(0, 0, 0, 0.04) 0px 1px 4px;
   font-family: "Inter", sans-serif;
   position: relative;
   z-index: 1000;
   margin-bottom: 20px;
-  border-radius: 5px;
+  width: 100vw;
+  margin-left: -20px;
+  margin-top: -20px;
 }
 
 .nav-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 20px;
 }
 
 .app-name {
@@ -117,7 +120,7 @@ nav.mobile-nav {
 .hamburger span {
   display: block;
   width: 25px;
-  height: 3px;
+  height: 2px;
   background-color: #006ba6;
   transition: 0.3s;
 }
@@ -131,7 +134,7 @@ nav.mobile-nav {
 }
 
 .hamburger span.open:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
+  transform: translateY(-6px) rotate(-45deg);
 }
 
 .nav-links {

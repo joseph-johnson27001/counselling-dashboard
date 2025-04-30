@@ -1,4 +1,5 @@
 <template>
+  <h2>Feedback</h2>
   <div class="filter-container">
     <label for="counsellor-select">Select Counsellor:</label>
     <select id="counsellor-select" v-model="selectedCounsellor">
