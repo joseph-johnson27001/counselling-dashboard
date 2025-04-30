@@ -15,7 +15,6 @@
   <h2 style="margin-top: 20px">Total Clients</h2>
 
   <div class="filter-container">
-    <label for="counsellor-select">Select Counsellor:</label>
     <select id="counsellor-select" v-model="selectedCounsellor">
       <option
         v-for="(value, counsellor) in totalClientsMonthly"

@@ -56,7 +56,6 @@ h2 {
 }
 
 select {
-  margin-left: 10px;
   padding: 10px 5px;
   border-radius: 4px;
   border: 1px solid #ccc;

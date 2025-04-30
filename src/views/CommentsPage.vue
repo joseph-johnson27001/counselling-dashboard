@@ -1,7 +1,6 @@
 <template>
   <h2>Comments</h2>
   <div class="filter-container">
-    <label for="counsellor-select">Select Counsellor:</label>
     <select v-model="selectedCounsellor" @change="filterComments">
       <option value="all">All Counsellors</option>
       <option

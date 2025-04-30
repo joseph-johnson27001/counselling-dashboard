@@ -1,7 +1,6 @@
 <template>
   <h2>Counsellor Information</h2>
   <div class="filter-container">
-    <label for="counsellor-select">Select Counsellor:</label>
     <select id="counsellor-select" v-model="selectedCounsellor">
       <option
         v-for="counsellor in Object.keys(sessionHoursMonthly)"
