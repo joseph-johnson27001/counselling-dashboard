@@ -3,7 +3,7 @@
     <label for="counsellor-select">Select Counsellor:</label>
     <select id="counsellor-select" v-model="selectedCounsellor">
       <option
-        v-for="(value, counsellor) in totalClientsMonthly"
+        v-for="counsellor in Object.keys(sessionHoursMonthly)"
         :key="counsellor"
         :value="counsellor"
       >
@@ -13,22 +13,6 @@
   </div>
 
   <div class="graph-container">
-    <div>
-      <GraphCard title="Clients (Weekly)">
-        <TotalClientsChart
-          :counts="filteredWeeklyClientCounts"
-          :labels="weeklyLabels"
-        />
-      </GraphCard>
-    </div>
-    <div>
-      <GraphCard title="Clients (Monthly)">
-        <TotalClientsChart
-          :counts="filteredMonthlyClientCounts"
-          :labels="monthlyLabels"
-        />
-      </GraphCard>
-    </div>
     <div>
       <GraphCard title="Session Hours (Weekly)">
         <TotalSessionHoursChart
@@ -50,14 +34,12 @@
 
 <script>
 import GraphCard from "@/components/UI/GraphCard.vue";
-import TotalClientsChart from "@/components/Graphs/TotalClientsGraph.vue";
 import TotalSessionHoursChart from "@/components/Graphs/TotalSessionHoursGraph.vue";
 
 export default {
   name: "ClientInformationPage",
   components: {
     GraphCard,
-    TotalClientsChart,
     TotalSessionHoursChart,
   },
   data() {
@@ -91,26 +73,6 @@ export default {
         "15/04",
         "22/04",
       ],
-
-      // Total Clients
-      totalClientsMonthly: {
-        "All Counsellors": [
-          120, 130, 135, 140, 150, 155, 160, 165, 170, 180, 185, 190,
-        ],
-        "Rebecca McDonnell": [30, 32, 34, 36, 38, 39, 40, 41, 42, 44, 45, 46],
-        "Elly Messo": [25, 26, 27, 28, 29, 30, 31, 32, 32, 33, 34, 35],
-        "Lorena Halpin-Doyle": [20, 21, 23, 24, 25, 26, 27, 28, 28, 29, 30, 31],
-        "Joanne Barnuevo": [45, 48, 51, 52, 53, 54, 56, 58, 60, 64, 66, 68],
-      },
-      totalClientsWeekly: {
-        "All Counsellors": [30, 32, 34, 36, 37, 38, 39, 40, 41, 42, 44, 45],
-        "Rebecca McDonnell": [8, 9, 9, 9, 10, 10, 10, 10, 11, 11, 11, 11],
-        "Elly Messo": [7, 7, 8, 8, 8, 8, 8, 8, 9, 9, 9, 9],
-        "Lorena Halpin-Doyle": [5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7],
-        "Joanne Barnuevo": [10, 11, 12, 13, 13, 14, 15, 15, 14, 15, 16, 17],
-      },
-
-      // Session Hours
       sessionHoursMonthly: {
         "All Counsellors": [
           200, 210, 220, 230, 240, 245, 250, 255, 260, 270, 275, 280,
@@ -130,15 +92,6 @@ export default {
     };
   },
   computed: {
-    // Clients
-    filteredMonthlyClientCounts() {
-      return this.totalClientsMonthly[this.selectedCounsellor] || [];
-    },
-    filteredWeeklyClientCounts() {
-      return this.totalClientsWeekly[this.selectedCounsellor] || [];
-    },
-
-    // Session Hours
     filteredMonthlySessionHours() {
       return this.sessionHoursMonthly[this.selectedCounsellor] || [];
     },
