@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/views/HomePage.vue";
 import Themes from "@/views/ThemesPage.vue";
 import Expenses from "@/views/ExpensesPage.vue";
-import ClientInfo from "@/views/ClientInformationPage.vue";
+import counsellorInfo from "@/views/CounsellorInformationPage.vue";
 import Feedback from "@/views/FeedbackPage.vue";
 import Comments from "@/views/CommentsPage.vue";
 
@@ -24,9 +24,9 @@ const routes = [
     component: Expenses,
   },
   {
-    path: "/client-info",
-    name: "ClientInfo",
-    component: ClientInfo,
+    path: "/counsellor-info",
+    name: "counsellorInfo",
+    component: counsellorInfo,
   },
   {
     path: "/feedback",

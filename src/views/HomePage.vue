@@ -26,7 +26,7 @@
 
   <div class="graph-container">
     <div>
-      <GraphCard title="Clients (Weekly)">
+      <GraphCard title="Total Clients (Weekly)">
         <TotalClientsChart
           :counts="filteredWeeklyClientCounts"
           :labels="weeklyLabels"
@@ -34,7 +34,7 @@
       </GraphCard>
     </div>
     <div>
-      <GraphCard title="Clients (Monthly)">
+      <GraphCard title="Total Clients (Monthly)">
         <TotalClientsChart
           :counts="filteredMonthlyClientCounts"
           :labels="monthlyLabels"

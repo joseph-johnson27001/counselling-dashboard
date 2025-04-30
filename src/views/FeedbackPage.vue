@@ -13,7 +13,7 @@
   </div>
   <div class="graph-container">
     <div>
-      <GraphCard title="Feedback (Weekly)">
+      <GraphCard title="Average Feedback (Weekly)">
         <FeedbackChart
           :ratings="filteredWeeklyRatings"
           :labels="weeklyLabels"
@@ -21,7 +21,7 @@
       </GraphCard>
     </div>
     <div>
-      <GraphCard title="Feedback (Monthly)">
+      <GraphCard title="Average Feedback (Monthly)">
         <FeedbackChart
           :ratings="filteredMonthlyRatings"
           :labels="monthlyLabels"

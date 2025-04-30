@@ -14,7 +14,7 @@
 
   <div class="graph-container">
     <div>
-      <GraphCard title="Session Hours (Weekly)">
+      <GraphCard title="Total Session Hours (Weekly)">
         <TotalSessionHoursChart
           :sessionHours="filteredWeeklySessionHours"
           :labels="weeklyLabels"
@@ -22,7 +22,7 @@
       </GraphCard>
     </div>
     <div>
-      <GraphCard title="Session Hours (Monthly)">
+      <GraphCard title="Total Session Hours (Monthly)">
         <TotalSessionHoursChart
           :sessionHours="filteredMonthlySessionHours"
           :labels="monthlyLabels"
@@ -37,7 +37,7 @@ import GraphCard from "@/components/UI/GraphCard.vue";
 import TotalSessionHoursChart from "@/components/Graphs/TotalSessionHoursGraph.vue";
 
 export default {
-  name: "ClientInformationPage",
+  name: "CounsellorInformationPage",
   components: {
     GraphCard,
     TotalSessionHoursChart,

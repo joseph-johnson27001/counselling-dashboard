@@ -43,10 +43,10 @@ export default {
           link: "/expenses",
         },
         {
-          name: "clientInfo",
-          label: "Client Information",
+          name: "counsellorInfo",
+          label: "Counsellor Info",
           icon: "far fa-address-book",
-          link: "/client-info",
+          link: "/counsellor-info",
         },
         {
           name: "feedback",
