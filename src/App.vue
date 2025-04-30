@@ -108,6 +108,12 @@ canvas {
     margin-left: 0px;
   }
 }
+
+@media (max-width: 699px) {
+  h2 {
+    text-align: center;
+  }
+}
 </style>
 
 <style scoped>
