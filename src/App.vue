@@ -63,6 +63,11 @@ select {
   font-family: "Assistant", sans-serif;
   font-size: 14px;
   outline: none;
+  background-color: #fff;
+}
+
+option {
+  background-color: #fff;
 }
 
 .filter-container {
