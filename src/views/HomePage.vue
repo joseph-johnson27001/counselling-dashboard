@@ -10,18 +10,55 @@
       :icon-container-color="stat.iconContainerColor"
     />
   </div>
+
+  <div class="filter-container">
+    <label for="counsellor-select">Select Counsellor:</label>
+    <select id="counsellor-select" v-model="selectedCounsellor">
+      <option
+        v-for="(value, counsellor) in totalClientsMonthly"
+        :key="counsellor"
+        :value="counsellor"
+      >
+        {{ counsellor }}
+      </option>
+    </select>
+  </div>
+
+  <div class="graph-container">
+    <div>
+      <GraphCard title="Clients (Weekly)">
+        <TotalClientsChart
+          :counts="filteredWeeklyClientCounts"
+          :labels="weeklyLabels"
+        />
+      </GraphCard>
+    </div>
+    <div>
+      <GraphCard title="Clients (Monthly)">
+        <TotalClientsChart
+          :counts="filteredMonthlyClientCounts"
+          :labels="monthlyLabels"
+        />
+      </GraphCard>
+    </div>
+  </div>
 </template>
 
 <script>
 import StatisticsCard from "@/components/UI/StatisticsCard.vue";
+import GraphCard from "@/components/UI/GraphCard.vue";
+import TotalClientsChart from "@/components/Graphs/TotalClientsGraph.vue";
 
 export default {
   name: "HomePage",
   components: {
     StatisticsCard,
+    GraphCard,
+    TotalClientsChart,
   },
   data() {
     return {
+      selectedCounsellor: "All Counsellors",
       stats: [
         {
           iconClass: "fas fa-user-friends",
@@ -80,7 +117,59 @@ export default {
           iconContainerColor: "rgba(255, 188, 0, 0.1)",
         },
       ],
+      monthlyLabels: [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ],
+      weeklyLabels: [
+        "05/02",
+        "12/02",
+        "19/02",
+        "26/02",
+        "04/03",
+        "11/03",
+        "18/03",
+        "25/03",
+        "01/04",
+        "08/04",
+        "15/04",
+        "22/04",
+      ],
+      totalClientsMonthly: {
+        "All Counsellors": [
+          120, 130, 135, 140, 150, 155, 160, 165, 170, 180, 185, 190,
+        ],
+        "Rebecca McDonnell": [30, 32, 34, 36, 38, 39, 40, 41, 42, 44, 45, 46],
+        "Elly Messo": [25, 26, 27, 28, 29, 30, 31, 32, 32, 33, 34, 35],
+        "Lorena Halpin-Doyle": [20, 21, 23, 24, 25, 26, 27, 28, 28, 29, 30, 31],
+        "Joanne Barnuevo": [45, 48, 51, 52, 53, 54, 56, 58, 60, 64, 66, 68],
+      },
+      totalClientsWeekly: {
+        "All Counsellors": [30, 32, 34, 36, 37, 38, 39, 40, 41, 42, 44, 45],
+        "Rebecca McDonnell": [8, 9, 9, 9, 10, 10, 10, 10, 11, 11, 11, 11],
+        "Elly Messo": [7, 7, 8, 8, 8, 8, 8, 8, 9, 9, 9, 9],
+        "Lorena Halpin-Doyle": [5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7],
+        "Joanne Barnuevo": [10, 11, 12, 13, 13, 14, 15, 15, 14, 15, 16, 17],
+      },
     };
+  },
+  computed: {
+    filteredMonthlyClientCounts() {
+      return this.totalClientsMonthly[this.selectedCounsellor] || [];
+    },
+    filteredWeeklyClientCounts() {
+      return this.totalClientsWeekly[this.selectedCounsellor] || [];
+    },
   },
 };
 </script>
