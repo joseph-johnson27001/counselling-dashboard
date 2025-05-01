@@ -45,4 +45,11 @@ const router = createRouter({
   routes,
 });
 
+router.afterEach(() => {
+  const mainContent = document.querySelector(".main-content");
+  if (mainContent) {
+    mainContent.scrollTop = 0;
+  }
+});
+
 export default router;
