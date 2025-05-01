@@ -88,8 +88,8 @@ nav.mobile-nav {
   z-index: 1000;
   margin-bottom: 20px;
   width: 100vw;
-  margin-left: -20px;
-  margin-top: -20px;
+  box-sizing: border-box;
+  margin: -20px -20px 20px -20px;
 }
 
 .nav-container {
