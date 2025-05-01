@@ -34,6 +34,7 @@ body {
 }
 
 h2 {
+  display: none;
   font-family: "Inter", sans-serif;
   font-size: 24px;
   font-weight: 400;
@@ -115,6 +116,7 @@ canvas {
 
 @media (max-width: 699px) {
   h2 {
+    display: block;
     text-align: center;
   }
 }
