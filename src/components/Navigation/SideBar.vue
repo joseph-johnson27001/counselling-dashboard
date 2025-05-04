@@ -135,6 +135,7 @@ export default {
   margin: 0;
   color: #0b508b;
   font-size: 1.8rem;
+  letter-spacing: -1px;
 }
 
 .sidebar-title i {
@@ -157,13 +158,11 @@ export default {
   margin: 4px 7px;
   display: flex;
   align-items: center;
-  transition: background-color 0.3s ease;
   white-space: nowrap;
 }
 
 .sidebar ul li.logout-item {
   margin-top: auto;
-  transition: color 0.3s ease;
 }
 
 .sidebar ul li:hover {
@@ -175,11 +174,7 @@ export default {
 }
 
 .sidebar ul li.active {
-  background: linear-gradient(
-    270deg,
-    rgba(115, 103, 240, 0.7),
-    rgb(115, 103, 240)
-  );
+  background: #6685ff;
   color: white;
 }
 
