@@ -236,7 +236,7 @@ export default {
           age: 16,
           themes: {
             Sleep: true,
-            LowMood: true,
+            "Low Mood": true,
             Anxiety: false,
           },
         },
